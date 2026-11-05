@@ -7,6 +7,13 @@ The pipeline merges transaction and identity records by `TransactionID`, uses a 
 train/validation/test split, compares SGD logistic classification with histogram gradient boosting, and selects
 the model with the highest validation PR-AUC. The held-out internal test period is not used for selection.
 
+## Dataset source
+
+- [IEEE-CIS Fraud Detection competition and dataset](https://www.kaggle.com/competitions/ieee-fraud-detection)
+
+Kaggle requires an account and acceptance of the competition rules before download. Those rules apply to
+the data independently of this project's code licence, so the raw CSV files are not redistributed here.
+
 ## Standard team folder layout
 
 | Folder | Purpose |
