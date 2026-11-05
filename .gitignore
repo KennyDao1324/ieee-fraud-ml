@@ -7,6 +7,10 @@ __pycache__/
 .ruff_cache/
 .DS_Store
 
+preprocessed_df/*
+!preprocessed_df/.gitkeep
+!preprocessed_df/README.md
+
 data/raw/*
 !data/raw/.gitkeep
 artifacts/*

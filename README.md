@@ -7,6 +7,26 @@ The pipeline merges transaction and identity records by `TransactionID`, uses a 
 train/validation/test split, compares SGD logistic classification with histogram gradient boosting, and selects
 the model with the highest validation PR-AUC. The held-out internal test period is not used for selection.
 
+## Standard team folder layout
+
+| Folder | Purpose |
+| --- | --- |
+| `checkpoint/` | Production model and model-card links |
+| `dataset/` | Local access to the five supplied IEEE-CIS CSV files |
+| `evaluation/` | Evaluation entrypoint, metrics, and prediction access |
+| `preprocess_data/` | Merge, validation, profiling, and hashing entrypoint |
+| `preprocessed_df/` | Optional generated feature-table storage |
+| `training_model/` | Main model-training and submission entrypoint |
+| `utils/` | Shared paths used by the workflow scripts |
+
+Use the standardized workflow from the project root:
+
+```bash
+python preprocess_data/run.py
+python training_model/train.py
+python evaluation/evaluate.py
+```
+
 ## Project map
 
 | Location | Purpose |
