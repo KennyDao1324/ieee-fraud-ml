@@ -29,14 +29,22 @@ Open this folder as the project:
 /Users/daoduykha/Documents/Playground/ieee-fraud-ml
 ```
 
-Create the environment in PyCharm's terminal:
+This computer is already configured to use the project-local interpreter:
 
-```bash
-conda env create -f environment.yml
-conda activate ieee-fraud-ml
+```text
+/Users/daoduykha/Documents/Playground/ieee-fraud-ml/.venv/bin/python
 ```
 
-Select that environment under **Settings > Project > Python Interpreter**.
+For a fresh clone on another computer, create the same environment in PyCharm's terminal:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[dev]"
+```
+
+Select `.venv/bin/python` under **Settings > Project > Python Interpreter**. The included
+`environment.yml` remains available for teammates who prefer Conda.
 
 ## Connect the supplied data
 
