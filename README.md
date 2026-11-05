@@ -54,6 +54,23 @@ python evaluation/evaluate.py
 | `artifacts/model_card.json` | Split, selection, metrics, and configuration record |
 | `docs/DATASET.md` | Dataset handling notes |
 
+## Evaluation results
+
+Team members can start from the [evaluation guide](evaluation/README.md) or open the
+[complete outputs folder](outputs/). The main report figures are linked below.
+
+- [Confusion matrix](outputs/confusion_matrix.png)
+- [Model comparison chart](outputs/model_comparison.png)
+- [Prediction distribution](outputs/prediction_distribution.png)
+- [Model comparison table](outputs/model_comparison.csv)
+- [Complete metrics](outputs/metrics.json)
+
+![IEEE-CIS confusion matrix](outputs/confusion_matrix.png)
+
+![IEEE-CIS model comparison](outputs/model_comparison.png)
+
+![IEEE-CIS prediction distribution](outputs/prediction_distribution.png)
+
 ## Setup in PyCharm
 
 Open this folder as the project:
