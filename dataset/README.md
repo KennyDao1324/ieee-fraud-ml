@@ -1,5 +1,6 @@
 # Dataset
 
-`raw` points to `data/raw`, which contains local links to the five supplied IEEE-CIS CSV files. The raw
-files remain outside Git and are not duplicated inside the project.
+The five `.csv` links expose the supplied IEEE-CIS transaction, identity, and sample-submission files
+directly in this folder. They resolve to `data/raw` without duplicating the 1.3 GB dataset. Raw data remains
+outside Git.
 

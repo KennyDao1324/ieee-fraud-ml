@@ -12,10 +12,10 @@ the model with the highest validation PR-AUC. The held-out internal test period 
 | Folder | Purpose |
 | --- | --- |
 | `checkpoint/` | Production model and model-card links |
-| `dataset/` | Local access to the five supplied IEEE-CIS CSV files |
-| `evaluation/` | Evaluation entrypoint, metrics, and prediction access |
+| `dataset/` | Direct access to the five supplied `.csv` files |
+| `evaluation/` | Metrics, comparison tables, prediction CSV, and PNG charts |
 | `preprocess_data/` | Merge, validation, profiling, and hashing entrypoint |
-| `preprocessed_df/` | Optional generated feature-table storage |
+| `preprocessed_df/` | Merged train-ready `.csv.gz` table with split labels |
 | `training_model/` | Main model-training and submission entrypoint |
 | `utils/` | Shared paths used by the workflow scripts |
 
