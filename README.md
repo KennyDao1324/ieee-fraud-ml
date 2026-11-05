@@ -19,6 +19,19 @@ the model with the highest validation PR-AUC. The held-out internal test period 
 | `training_model/` | Main model-training and submission entrypoint |
 | `utils/` | Shared paths used by the workflow scripts |
 
+### Why some files are intentionally short
+
+Some files in these folders contain only one or two lines because they support the project structure rather
+than implement the machine-learning pipeline:
+
+- `.gitkeep` keeps an otherwise empty output folder visible in Git.
+- `__init__.py` marks a directory as a Python package and may only contain a package description or version.
+- Folder-level `README.md` files briefly describe what belongs in that folder.
+- Small CSV and JSON files are generated summaries or metadata, not Python source code.
+
+The main implementation is under `src/ieee_fraud/`. The scripts in `preprocess_data/`, `training_model/`, and
+`evaluation/` are convenient entrypoints that call that shared implementation without duplicating it.
+
 Use the standardized workflow from the project root:
 
 ```bash
