@@ -7,6 +7,10 @@
   "max_test_rows": 40000,
   "random_seed": 42,
   "target_false_positive_rate": 0.05,
-  "hist_gradient_boosting_iterations": 120
+  "hist_gradient_boosting_iterations": 120,
+  "xgboost_estimators": 500,
+  "xgboost_max_depth": 7,
+  "xgboost_learning_rate": 0.05,
+  "n_jobs": 4
 }
 

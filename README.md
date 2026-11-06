@@ -4,8 +4,9 @@ This is a standalone machine-learning project for the IEEE-CIS Fraud Detection d
 from the BAF project and has its own environment, data links, models, outputs, tests, API, and Git history.
 
 The pipeline merges transaction and identity records by `TransactionID`, uses a chronological
-train/validation/test split, compares SGD logistic classification with histogram gradient boosting, and selects
-the model with the highest validation PR-AUC. The held-out internal test period is not used for selection.
+train/validation/test split, compares SGD logistic classification, histogram gradient boosting, and
+XGBoost, and selects the model with the highest validation PR-AUC. The held-out internal test period is
+not used for selection.
 
 ## Dataset source
 
@@ -77,6 +78,11 @@ Team members can start from the [evaluation guide](evaluation/README.md) or open
 ![IEEE-CIS model comparison](outputs/model_comparison.png)
 
 ![IEEE-CIS prediction distribution](outputs/prediction_distribution.png)
+
+XGBoost was selected by validation PR-AUC (0.5403). On the held-out internal test period it achieved
+PR-AUC **0.4795**, ROC-AUC **0.8876**, precision **0.2627**, recall **0.6070**, and F1 **0.3668**.
+The validation threshold targets a 5% false-positive rate; the observed test false-positive rate was
+6.14% under temporal drift.
 
 ## Setup in PyCharm
 

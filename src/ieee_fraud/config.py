@@ -16,6 +16,10 @@ class TrainingConfig:
     random_seed: int = 42
     target_false_positive_rate: float = 0.05
     hist_gradient_boosting_iterations: int = 120
+    xgboost_estimators: int = 500
+    xgboost_max_depth: int = 7
+    xgboost_learning_rate: float = 0.05
+    n_jobs: int = 4
 
     @classmethod
     def from_json(cls, path: str | Path) -> TrainingConfig:

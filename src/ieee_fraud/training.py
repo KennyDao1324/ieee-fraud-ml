@@ -10,6 +10,7 @@ from sklearn.base import clone
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.linear_model import SGDClassifier
 from sklearn.pipeline import Pipeline
+from xgboost import XGBClassifier
 
 from .config import TrainingConfig
 from .data import (
@@ -28,7 +29,9 @@ def _json_dump(payload: object, path: Path) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
 
 
-def candidate_models(config: TrainingConfig) -> dict[str, Pipeline]:
+def candidate_models(
+    config: TrainingConfig, positive_weight: float = 1.0
+) -> dict[str, Pipeline]:
     from .data import build_preprocessor
 
     return {
@@ -66,6 +69,29 @@ def candidate_models(config: TrainingConfig) -> dict[str, Pipeline]:
                 ),
             ]
         ),
+        "xgboost": Pipeline(
+            [
+                ("preprocessor", build_preprocessor()),
+                (
+                    "model",
+                    XGBClassifier(
+                        n_estimators=config.xgboost_estimators,
+                        max_depth=config.xgboost_max_depth,
+                        learning_rate=config.xgboost_learning_rate,
+                        min_child_weight=5,
+                        subsample=0.85,
+                        colsample_bytree=0.85,
+                        reg_lambda=2.0,
+                        scale_pos_weight=positive_weight,
+                        objective="binary:logistic",
+                        eval_metric="aucpr",
+                        tree_method="hist",
+                        n_jobs=config.n_jobs,
+                        random_state=config.random_seed,
+                    ),
+                ),
+            ]
+        ),
     }
 
 
@@ -78,7 +104,8 @@ def train_models(frame: pd.DataFrame, config: TrainingConfig) -> tuple[dict, Pip
     comparisons = []
     fitted_models: dict[str, Pipeline] = {}
     thresholds: dict[str, float] = {}
-    for name, model in candidate_models(config).items():
+    positive_weight = float((y_train == 0).sum() / max(1, (y_train == 1).sum()))
+    for name, model in candidate_models(config, positive_weight).items():
         model.fit(X_train, y_train)
         validation_probability = model.predict_proba(X_validation)[:, 1]
         threshold = threshold_at_fpr(

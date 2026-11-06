@@ -6,10 +6,14 @@
     "max_test_rows": 40000,
     "max_train_rows": 120000,
     "max_validation_rows": 40000,
+    "n_jobs": 4,
     "random_seed": 42,
     "target_false_positive_rate": 0.05,
     "train_fraction": 0.7,
-    "validation_fraction": 0.15
+    "validation_fraction": 0.15,
+    "xgboost_estimators": 500,
+    "xgboost_learning_rate": 0.05,
+    "xgboost_max_depth": 7
   },
   "dataset_profile": {
     "columns_loaded": 83,
@@ -121,20 +125,20 @@
     "validation_time_min": 10438003
   },
   "test_metrics": {
-    "accuracy": 0.92445,
-    "f1": 0.3583864118895966,
-    "false_negative": 548,
-    "false_positive": 2474,
-    "false_positive_rate": 0.06407998342312474,
-    "pr_auc": 0.4688286097500507,
-    "precision": 0.2543701024713683,
-    "recall": 0.6063218390804598,
-    "roc_auc": 0.8817770314263973,
-    "threshold": 0.6459867465791748,
-    "true_negative": 36134,
-    "true_positive": 844
+    "accuracy": 0.92705,
+    "f1": 0.3667534722222222,
+    "false_negative": 547,
+    "false_positive": 2371,
+    "false_positive_rate": 0.06141214256112723,
+    "pr_auc": 0.4794794962447699,
+    "precision": 0.2627487562189055,
+    "recall": 0.6070402298850575,
+    "roc_auc": 0.8875633913643055,
+    "threshold": 0.3065411150455475,
+    "true_negative": 36237,
+    "true_positive": 845
   },
-  "threshold": 0.6459867465791748,
+  "threshold": 0.3065411150455475,
   "validation_comparison": [
     {
       "accuracy": 0.929925,
@@ -165,7 +169,22 @@
       "threshold": 0.6459867465791748,
       "true_negative": 36698,
       "true_positive": 824
+    },
+    {
+      "accuracy": 0.9399,
+      "f1": 0.4259789875835721,
+      "false_negative": 482,
+      "false_positive": 1922,
+      "false_positive_rate": 0.04975922953451043,
+      "model": "xgboost",
+      "pr_auc": 0.5402778027317817,
+      "precision": 0.3169864960909737,
+      "recall": 0.6491994177583698,
+      "roc_auc": 0.8923013143397087,
+      "threshold": 0.3065411150455475,
+      "true_negative": 36704,
+      "true_positive": 892
     }
   ],
-  "winner": "hist_gradient_boosting"
+  "winner": "xgboost"
 }
